@@ -41,6 +41,7 @@ class HomeController extends Controller
     }
 
     function submitRating(Request $request) {
+        
         $rating_data = $request->all();
         //echo '<pre>'.print_r($rating_data, true).'</pre>'; exit;
         $productRating_model = new ProductRating();
