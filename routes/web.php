@@ -39,12 +39,26 @@ Route::post('product/submitRating','HomeController@submitRating');
 Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');
-// Cart Items
+// Cart Items URL
 Route::post('/add-to-cart','CartController@addToCart');
 Route::get('/mycart', 'CartController@mycart');
 Route::post('/update-cart', 'CartController@updateCart');
 Route::any('/cartItemDelete/{temp_order_row_id}', 'CartController@cartItemDelete');
 Route::any('/cartItemDeleteAll', 'CartController@cartItemDeleteAll');
+
+// Checkout URL 
+Route::get('/checkoutPage', 'CartController@checkoutItems');
+Route::post('/confirm-order','CartController@confirmOrder');
+Route::post('/checkout', 'CartController@checkout');
+Route::post('/checkoutWithregistration', 'CartController@checkoutWithregistration');
+
+//Register....
+Route::get('/user-registration', 'Auth\CommonController@showRegistrationForm')->name('user.registration');
+Route::post('/user-registration', 'Auth\CommonController@register')->name('user.registration.submit');
+//log in 
+Route::post('/log-in', 'Auth\CommonController@login')->name('gaust.login');
+Route::get('users/logout','Auth\LoginController@userlogout')->name('user.logout');
+
 
 Route::group(['middleware' => 'admin', 'namespace' => 'Admin'], function () {
     Route::get('/admin', 'LoginController@login');
