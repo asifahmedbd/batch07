@@ -3,7 +3,7 @@
 <div class="container">
   <h2>Cart Page</h2>
     <div class="alert alert-danger" role="alert" style="display: none;">Items Deleted Successfully.</div>
-  @if( isset($data['temp_orders']) && count($data['temp_orders'] ) )       
+  @if( isset($data['temp_orders']) && count($data['temp_orders'] ))       
   <table class="table table-bordered">
     <thead>
       <tr>
@@ -16,7 +16,7 @@
     <tbody>
       @foreach($data['temp_orders'] as $temp_order) 
         <form id="update_cart" method="post" action="{{ url('/') }}/update-cart"id="{{$temp_order->temp_order_row_id}}">
-        {{ csrf_field() }}     
+        {{ csrf_field() }}
         <tr id="tid_{{$temp_order->temp_order_row_id}}">
           <td>{{$temp_order->product_name}}</td>
           <td>

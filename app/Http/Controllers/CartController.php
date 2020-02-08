@@ -92,6 +92,8 @@ class CartController extends Controller
 
     public function updateCart(Request $request) {
 
+      //dd($request);
+
       if (! session()->has('tracking_number')) {
             session()->put('tracking_number', Session::getId());
         }
@@ -121,8 +123,7 @@ class CartController extends Controller
         if (! session()->has('tracking_number')) {
             session()->put('tracking_number', Session::getId());
         }
-        DB::table('temp_orders')                              
-                               ->where('tracking_number', session()->get('tracking_number'))->delete();
+        DB::table('temp_orders')->where('tracking_number', session()->get('tracking_number'))->delete();
     }
     
     
